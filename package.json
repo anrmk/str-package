@@ -1,73 +1,76 @@
 {
-	"name": "@anrmk/str-package",
-	"version": "0.1.0",
-	"private": true,
-	"description": "Shared providers, types, and utils for STR services",
-	"license": "MIT",
-	"type": "module",
-	"sideEffects": false,
-	"engines": {
-		"node": ">=20"
-	},
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
-		},
-		"./providers/bybit": {
-			"types": "./dist/providers/bybit/index.d.ts",
-			"import": "./dist/providers/bybit/index.js",
-			"require": "./dist/providers/bybit/index.cjs"
-		},
-		"./types": {
-			"types": "./dist/types/index.d.ts",
-			"import": "./dist/types/index.js",
-			"require": "./dist/types/index.cjs"
-		},
-		"./types/bybit": {
-			"types": "./dist/types/bybit/index.d.ts",
-			"import": "./dist/types/bybit/index.js",
-			"require": "./dist/types/bybit/index.cjs"
-		},
-		"./types/challenge": {
-			"types": "./dist/types/challenge/index.d.ts",
-			"import": "./dist/types/challenge/index.js",
-			"require": "./dist/types/challenge/index.cjs"
-		},
-		"./utils/bybitHelper": {
-			"types": "./dist/utils/bybitHelper.d.ts",
-			"import": "./dist/utils/bybitHelper.js",
-			"require": "./dist/utils/bybitHelper.cjs"
-		},
-		"./utils/challengeHelper": {
-			"types": "./dist/utils/challengeHelper.d.ts",
-			"import": "./dist/utils/challengeHelper.js",
-			"require": "./dist/utils/challengeHelper.cjs"
-		},
-		"./utils/helper": {
-			"types": "./dist/utils/helper.d.ts",
-			"import": "./dist/utils/helper.js",
-			"require": "./dist/utils/helper.cjs"
-		},
-		"./package.json": "./package.json"
-	},
-	"files": [
-		"dist",
-		"README.md"
-	],
-	"scripts": {
-		"clean": "rm -rf dist",
-		"typecheck": "tsc --noEmit",
-		"build": "tsup",
-		"prepublishOnly": "npm run clean && npm run build"
-	},
-	"devDependencies": {
-		"@types/node": "^24.8.1",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.3"
-	}
+  "name": "@anrmk/str-package",
+  "version": "0.1.0",
+  "description": "Shared providers, types, and utils for STR services",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./providers/bybit": {
+      "types": "./dist/providers/bybit/index.d.ts",
+      "import": "./dist/providers/bybit/index.js",
+      "require": "./dist/providers/bybit/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./types/bybit": {
+      "types": "./dist/types/bybit/index.d.ts",
+      "import": "./dist/types/bybit/index.js",
+      "require": "./dist/types/bybit/index.cjs"
+    },
+    "./types/challenge": {
+      "types": "./dist/types/challenge/index.d.ts",
+      "import": "./dist/types/challenge/index.js",
+      "require": "./dist/types/challenge/index.cjs"
+    },
+    "./utils/bybitHelper": {
+      "types": "./dist/utils/bybitHelper.d.ts",
+      "import": "./dist/utils/bybitHelper.js",
+      "require": "./dist/utils/bybitHelper.cjs"
+    },
+    "./utils/challengeHelper": {
+      "types": "./dist/utils/challengeHelper.d.ts",
+      "import": "./dist/utils/challengeHelper.js",
+      "require": "./dist/utils/challengeHelper.cjs"
+    },
+    "./utils/helper": {
+      "types": "./dist/utils/helper.d.ts",
+      "import": "./dist/utils/helper.js",
+      "require": "./dist/utils/helper.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "build": "tsup",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
