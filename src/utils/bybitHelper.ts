@@ -2,7 +2,7 @@ import { createHmac } from "crypto";
 import { env } from "node:process";
 
 const BYBIT_RECV_WINDOW_TIMEOUT_MS =
-  env.NEXT_PUBLIC_BYBIT_RECV_WINDOW_TIMEOUT_MS ?? "5000";
+  env.NEXT_PUBLIC_BYBIT_RECV_WINDOW_TIMEOUT_MS ?? "20000";
 
 export function signBybitRequest(
   apiSecret: string,

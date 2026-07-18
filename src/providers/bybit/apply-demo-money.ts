@@ -15,10 +15,10 @@ export async function applyDemoMoney(
   payload: IBybitDemoApplyMoneyRequest,
 ): Promise<IBybitApiResponse<IBybitDemoApplyMoney>> {
   const { apiKey, apiSecret } = credentials;
-  const { signature, timestamp } = signBybitRequest(apiSecret, apiKey);
 
   const requestBody = JSON.stringify(payload);
-
+  const { signature, timestamp } = signBybitRequest(apiSecret, apiKey, requestBody);
+  
   let bybitRes: Response;
   try {
     bybitRes = await fetch(
