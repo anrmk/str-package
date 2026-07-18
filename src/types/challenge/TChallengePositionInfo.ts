@@ -1,0 +1,24 @@
+export type TChallengePositionInfo = {
+  symbol: string;
+  positionIdx: number;
+  side: string;
+  size: number;
+  avgPrice: number;
+  positionValue: number;
+  leverage: number;
+  markPrice: number;
+  liqPrice: number;
+  bustPrice: number;
+  positionIm: number;
+  positionMm: number;
+  takeProfit: number;
+  stopLoss: number;
+  unrealisedPnl: number;
+  cumRealisedPnl: number;
+  curRealisedPnl: number;
+  adlRankIndicator: number;
+  positionStatus: string;
+  createdTime: string;
+  updatedTime: string;
+  syncedAt: string;
+};

@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Test and coverage artifacts
+coverage/
+.nyc_output/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Cache directories
+.cache/
+.turbo/
+.eslintcache
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+package-lock.json
