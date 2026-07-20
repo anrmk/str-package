@@ -2,7 +2,7 @@ import type { IBybitWalletAccount, IBybitCoinBalance } from "./IBybitWalletBalan
 import type { IBybitClosedPnl } from "./IBybitClosedPnl";
 import type { IBybitCredentials } from "./IBybitCredentials";
 
-export type { IBybitAccountType, IBybitCoinType, IBybitApiKeyVipLevel } from "./enums";
+export { IBybitAccountType, IBybitCoinType, IBybitApiKeyVipLevel } from "./enums";
 export type { IBybitClosedPnl } from "./IBybitClosedPnl";
 export type { IBybitApiKeyInfo } from "./IBybitApiKeyInfo";
 export type { IBybitAccountInfo } from "./IBybitAccountInfo";

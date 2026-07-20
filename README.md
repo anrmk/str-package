@@ -59,24 +59,36 @@ npm run build
 
 ## Publish Updates (Push)
 
-When you change package code and want consumers to receive updates:
+When you change the package code and want consumers to receive updates, you need to ensure that the new code is compatible with the existing system.
 
-1. Bump package version:
+Bump package version:
 
 ```bash
 npm version patch
 ```
+2. Make sure your account is valid and you have an access
+
+Fix npm cache ownership (one time)
+```
+sudo chown -R 501:20 /Users/anrmk/.npm
+```
+Re-authenticate as your npm account
+```
+npm logout
+npm login
+npm whoami
+```
 
 Use `minor` or `major` when needed.
 
-2. Build and publish:
+3. Build and publish:
 
 ```bash
 npm run build
 npm publish --access public
 ```
 
-3. Push git commit and tags:
+4. Push git commit and tags:
 
 ```bash
 git push origin main --tags

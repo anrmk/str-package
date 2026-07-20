@@ -1,3 +1,5 @@
+import type { IBybitApiKeyVipLevel } from "./enums";
+
 // https://bybit-exchange.github.io/docs/v5/user/apikey-info
 // Get the information of the api key. Use the api key pending to be checked to call the endpoint. 
 // Both master and sub user's api key are applicable.
@@ -15,7 +17,7 @@ export type IBybitApiKeyInfo = {
   uta: number;
   userID: number;
   inviterID: number;
-  vipLevel: string;
+  vipLevel: IBybitApiKeyVipLevel;
   mktMakerLevel: string;
   affiliateID: number;
   rsaPublicKey: string;
