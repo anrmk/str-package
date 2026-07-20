@@ -22,3 +22,12 @@ export enum IBybitUnifiedMarginStatus {
   UNIFIED_TRADING_ACCOUNT_2_0 = 5,
   UNIFIED_TRADING_ACCOUNT_2_0_PRO = 6,
 }
+
+export enum IBybitApiKeyVipLevel {
+  NO_VIP = "No VIP",
+  VIP_1 = "VIP 1",
+  VIP_2 = "VIP 2",
+  VIP_3 = "VIP 3",
+  VIP_4 = "VIP 4",
+  VIP_5 = "VIP 5",
+}

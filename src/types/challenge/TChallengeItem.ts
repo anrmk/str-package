@@ -7,6 +7,7 @@ import type {
   TChallengeRule,
   TChallengeWalletBalance,
   TChallengeStatistics,
+  TChallengeApiKeyInfo,
 } from ".";
 //import type { TChallengeStats, TChallengeProgress, TChallengeRule, TChallengeWallet, TTradingType, TDrawdownType } from ".";
 
@@ -31,6 +32,7 @@ export type TChallengeItem = {
   hasCredentials: boolean;
   apiKeyHint?: string;
   
+  apiKeyInfo?: TChallengeApiKeyInfo;
   stats?: TChallengeStatistics;
   progress?: TChallengeProgress;
   rule?: TChallengeRule;
