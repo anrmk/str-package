@@ -1,15 +1,14 @@
 export type TChallengeProgress = {
   id: string | null;
   challengeId: string;
-  currentEquity: number;
-  currentTotalLoss: number;
-  currentTradingDays: number;
-  currentDailyDrawdown: number;
-  currentProfitTarget: number;
+  totalLoss: number;
+  tradingDays: number;
+  dailyDrawdown: number;
+  profitTarget: number;
   dailyStartingEquity: number;
   dailyStartingUpdatedAt: string;
-  maxDailyEquity: number;
-  minDailyEquity: number;
-  maxUpdatedAt: string;
-  minUpdatedAt: string;
+  dailyMaxEquity: number;
+  dailyMinEquity: number;
+  dailyMaxUpdatedAt: string;
+  dailyMinUpdatedAt: string;
 };
