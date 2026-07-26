@@ -27,10 +27,12 @@ export async function getApiKeyInfo(
       cache: "no-store",
     });
   } catch (error) {
+    console.error("ByBit API Key Info network error", error);
     throw new Error("ByBit API Key Info network error", { cause: error });
   }
 
   if (!bybitRes.ok) {
+    console.error("ByBit API Key Info request failed", bybitRes);
     throw new Error("ByBit API Key Info request failed");
   }
 
@@ -38,10 +40,12 @@ export async function getApiKeyInfo(
     (await bybitRes.json()) as IBybitApiResponse<IBybitApiKeyInfo>;
 
   if (bybitJson.retCode !== 0) {
+    console.error("ByBit API Key Info API error", bybitJson);
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 
   if (!bybitJson) {
+    console.error("Invalid ByBit API Key Info response", bybitJson);
     throw new Error("Invalid ByBit API Key Info response");
   }
 

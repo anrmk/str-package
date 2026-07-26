@@ -60,16 +60,19 @@ export async function getPositionInfo(
       },
     );
   } catch (error) {
-    throw new Error("ByBit Closed PNL API network error", { cause: error });
+    console.error("ByBit Position Info API network error", { cause: error });
+    throw new Error("ByBit Position Info API network error", { cause: error });
   }
 
   if (!bybitRes.ok) {
-    throw new Error("ByBit Closed PNL API request failed");
+    console.error("ByBit Position Info API request failed", bybitRes);
+    throw new Error("ByBit Position Info API request failed");
   }
 
   const bybitJson = (await bybitRes.json()) as IBybitApiResponse<IBybitApiResponseList<IBybitPositionInfo>>;
   
   if (bybitJson.retCode !== 0) {
+    console.error("ByBit Position Info API error", bybitJson);
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 

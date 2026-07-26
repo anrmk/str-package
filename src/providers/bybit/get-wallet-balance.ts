@@ -36,16 +36,19 @@ export async function getWalletBalance(
       },
     );
   } catch (error) {
+    console.error("ByBit Wallet API network error", error);
     throw new Error("ByBit Wallet API network error", { cause: error });
   }
 
   if (!bybitRes.ok) {
+    console.error("ByBit Wallet API request failed", bybitRes);
     throw new Error("ByBit Wallet API request failed: " + bybitRes.statusText);
   }
 
   const bybitJson = (await bybitRes.json()) as IBybitApiResponse<IBybitWalletAccount>;
 
   if (bybitJson.retCode !== 0) {
+    console.error("ByBit Wallet API error", bybitJson);
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 

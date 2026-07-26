@@ -31,10 +31,12 @@ export async function getAccountInfo(
       cache: "no-store",
     });
   } catch (error) {
+    console.error("ByBit Account API network error", error);
     throw new Error("ByBit Account API network error", { cause: error });
   }
 
   if (!bybitRes.ok) {
+    console.error("ByBit Account API request failed", bybitRes);
     throw new Error("ByBit Account API request failed");
   }
 
@@ -42,12 +44,14 @@ export async function getAccountInfo(
     (await bybitRes.json()) as IBybitApiResponse<IBybitAccountInfo>;
 
   if (bybitJson.retCode !== 0) {
+    console.error("ByBit Account API error", bybitJson);
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 
   const raw = bybitJson.result?.list?.[0];
 
   if (!raw) {
+    console.error("No account info returned", bybitJson);
     throw new Error("No account info returned");
   }
 

@@ -46,16 +46,19 @@ export async function getClosedPnl(
       },
     );
   } catch (error) {
+    console.error("ByBit Closed PNL API network error", error);
     throw new Error("ByBit Closed PNL API network error", { cause: error });
   }
 
   if (!bybitRes.ok) {
+    console.error("ByBit Closed PNL API request failed", bybitRes);
     throw new Error("ByBit Closed PNL API request failed");
   }
 
   const bybitJson = (await bybitRes.json()) as IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>;
 
   if (bybitJson.retCode !== 0) {
+    console.error("ByBit Closed PNL API error", bybitJson);
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 
