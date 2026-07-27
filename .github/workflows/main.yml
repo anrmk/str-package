@@ -2,8 +2,7 @@ name: Publish npm package
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   publish:
@@ -13,25 +12,33 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
 
-      - name: Test
-        run: npm test
-
-      - name: Build
-        run: npm run build
-
-      - name: Publish
-        run: npm publish --access public --provenance
+      - name: Publish (auto-bump if version exists)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
+            echo "Version ${PKG_VERSION} already exists. Auto-bumping patch..."
+            npm version patch --no-git-tag-version
+            NEW_VERSION=$(node -p "require('./package.json').version")
+            echo "Publishing ${PKG_NAME}@${NEW_VERSION}"
+          else
+            echo "Publishing ${PKG_NAME}@${PKG_VERSION}"
+          fi
+
+          npm publish --access public --provenance
