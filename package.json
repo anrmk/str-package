@@ -62,6 +62,7 @@
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "build": "tsup",
+    "test": "npm run typecheck",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "devDependencies": {
