@@ -5,6 +5,10 @@
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anrmk/str-package"
+  },
   "engines": {
     "node": ">=20"
   },
