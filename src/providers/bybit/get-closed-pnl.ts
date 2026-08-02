@@ -6,6 +6,7 @@ import { signBybitRequest } from "../../utils/bybitHelper";
 export async function getClosedPnl(
   credentials: IBybitCredentials,
   startTime?: number,
+  endTime?: number,
   cursor?: string,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>> {
   const { apiKey, apiSecret } = credentials;
@@ -17,6 +18,10 @@ export async function getClosedPnl(
 
   if (typeof startTime === "number") {
     query.set("startTime", String(startTime));
+  }
+
+  if (typeof endTime === "number") {
+    query.set("endTime", String(endTime));
   }
 
   if (typeof cursor === "string") {
