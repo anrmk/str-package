@@ -20,20 +20,3 @@ export type TChallengeClosedPnl = {
   updatedTime: string;
   updatedAt: string;
 };
-
-export type TChallengeClosedPnlStatistics = {
-  totalClosedTradesCount: number;
-  totalClosedTrades: number;
-  totalLongTrades: number;
-  totalLongTradesCount: number;
-  totalLongWins: number;
-  totalShortTrades: number;
-  totalShortTradesCount: number;
-  totalShortWins: number;
-  totalWins: number;
-  totalLosses: number;
-  winRate: number;
-  loosesRate: number;
-  totalCumEntryValue: number;
-  totalCumExitValue: number;
-};

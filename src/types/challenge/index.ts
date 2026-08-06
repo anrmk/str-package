@@ -9,7 +9,7 @@ export type {
 } from "./TChallengesRule";
 export type { TChallengeAccountInfo } from "./TChallengeAccountInfo";
 export type { TChallengeApiKeyInfo } from "./TChallengeApiKeyInfo";
-export type { TChallengeClosedPnl, TChallengeClosedPnlStatistics } from "./TChallengeClosedPnl";
+export type { TChallengeClosedPnl } from "./TChallengeClosedPnl";
 export type { TChallengeWalletBalance } from "./TChallengeWalletBalance";
 export type { TChallengeProgress } from "./TChallengeProgress";
 export type { TSyncResponse } from "../TSyncResponse";

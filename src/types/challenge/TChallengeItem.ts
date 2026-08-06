@@ -33,7 +33,7 @@ export type TChallengeItem = {
   apiKeyHint?: string;
   
   apiKeyInfo?: TChallengeApiKeyInfo;
-  stats?: TChallengeStatistics;
+  statistics?: TChallengeStatistics;
   progress?: TChallengeProgress;
   rule?: TChallengeRule;
   wallet?: TChallengeWalletBalance;
@@ -57,7 +57,7 @@ export type TChallengeListItem = {
   apiKeyHint?: string;
   hasCredentials: boolean;
 
-  stats?: TChallengeStatistics | null;
+  statistics?: TChallengeStatistics | null;
   progress?: TChallengeProgress | null;
   rule?: TChallengeRule | null;
   wallet?: TChallengeWalletBalance | null;
