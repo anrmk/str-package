@@ -8,6 +8,7 @@ import type {
   TChallengeWalletBalance,
   TChallengeStatistics,
   TChallengeApiKeyInfo,
+  TChallengeStatus
 } from ".";
 //import type { TChallengeStats, TChallengeProgress, TChallengeRule, TChallengeWallet, TTradingType, TDrawdownType } from ".";
 
@@ -19,7 +20,8 @@ export type TChallengeItem = {
   currency: string;
   ttype: TTradingType;
   ddtype: TDrawdownType;
-  status: string;
+  readonly status: TChallengeStatus;
+  readonly statusDescription: string;
   provider: string;
   startDate: string;
   endDate: string;
@@ -46,7 +48,8 @@ export type TChallengeListItem = {
   currency: string | null;
   ttype: TTradingType | null;
   ddtype: TDrawdownType | null;
-  status: string;
+  readonly status: TChallengeStatus;
+  readonly statusDescription: string;
   provider: string;
   //expiresAt: string;
   startDate: string;

@@ -4,6 +4,7 @@ export type TTradingType = "Futures" | "Spot" | "Margin" | "Options";
 export type TDrawdownType = "Trailing" | "Fixed";
 export type TChallengeCapital = 5000 | 10000 | 25000 | 50000 | 100000 | 200000;
 export type TChallengeProvider = "BYBIT" | "CLEO";
+export type TChallengeStatus = "ACTIVE" | "EXPIRED" | "COMPLETED" | "FAILED";
 
 export type TChallengeRule = {
   name: string;

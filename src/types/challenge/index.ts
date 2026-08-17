@@ -16,3 +16,4 @@ export type { TSyncResponse } from "../TSyncResponse";
 export type { TChallengePositionInfo } from "./TChallengePositionInfo";
 export type { TChallengeItem, TChallengeListItem } from "./TChallengeItem";
 export type { TChallengeStatistics } from "./TChallengeStatistics";
+export type { TChallengeStatus } from "./TChallengesRule";
