@@ -6,6 +6,7 @@ export type {
   TDrawdownType,
   TChallengeCapital,
   TChallengeProvider,
+  TChallengeStatus
 } from "./TChallengesRule";
 export type { TChallengeAccountInfo } from "./TChallengeAccountInfo";
 export type { TChallengeApiKeyInfo } from "./TChallengeApiKeyInfo";
@@ -16,4 +17,4 @@ export type { TSyncResponse } from "../TSyncResponse";
 export type { TChallengePositionInfo } from "./TChallengePositionInfo";
 export type { TChallengeItem, TChallengeListItem } from "./TChallengeItem";
 export type { TChallengeStatistics } from "./TChallengeStatistics";
-export type { TChallengeStatus } from "./TChallengesRule";
+export type { TChallengeTier } from "./TChallengeTier";
