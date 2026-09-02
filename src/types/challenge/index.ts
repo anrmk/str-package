@@ -6,7 +6,8 @@ export type {
   TDrawdownType,
   TChallengeCapital,
   TChallengeProvider,
-  TChallengeStatus
+  TChallengeStatus,
+  TChallengeRuleGroup,
 } from "./TChallengesRule";
 export type { TChallengeAccountInfo } from "./TChallengeAccountInfo";
 export type { TChallengeApiKeyInfo } from "./TChallengeApiKeyInfo";
