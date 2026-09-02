@@ -1,3 +1,5 @@
+import { TChallengeTier } from "../..";
+
 export type TChallengeType = "ONE_STEP" | "TWO_STEPS" | "THREE_STEPS";
 export type TChallengeMode = "VERIFICATION" | "CHALLENGE" | "FUNDED";
 
@@ -23,7 +25,16 @@ export type TChallengeRule = {
   profitTargetPct: number;
   feePolicy: string;
   prohibitedActions: string[];
+  isActive: boolean;
+
   readonly createdAt: string;
   readonly updatedAt: string;
-  isActive: boolean;
+
+  tiers?: TChallengeTier[]
 };
+
+export interface TChallengeRuleGroup {
+  label: string;
+  mode: TChallengeMode;
+  rules: TChallengeRule[];
+}
