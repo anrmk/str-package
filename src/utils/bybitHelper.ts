@@ -1,15 +1,17 @@
 import { createHmac } from "crypto";
 import { env } from "node:process";
+import { getServerTime } from "../providers/bybit";
 
 const BYBIT_RECV_WINDOW_TIMEOUT_MS =
   env.NEXT_PUBLIC_BYBIT_RECV_WINDOW_TIMEOUT_MS ?? "20000";
 
-export function signBybitRequest(
+export async function signBybitRequest(
   apiSecret: string,
   apiKey: string,
   queryString?: string,
 ) {
-  const timestamp = Date.now().toString();
+  const { result } = await getServerTime();
+  const timestamp = result?.time ?? Date.now().toString();
   const payload = `${timestamp}${apiKey}${BYBIT_RECV_WINDOW_TIMEOUT_MS}${queryString ?? ""}`;
   const signature = createHmac("sha256", apiSecret)
     .update(payload)
