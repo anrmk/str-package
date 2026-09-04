@@ -14,6 +14,7 @@ export type { IBybitDemoApplyMoneyItem,
   IBybitDemoApplyMoneyPayload,
   IBybitDemoApplyMoney as IBybitDemoApplyMoneyResponse
  } from "./IBybitDemoApplyMoney";
+export type { IBybitServerTime } from "./IBybitServerTime";
 
 export type IBybitApiResponse<T> = {
   retCode: number;
