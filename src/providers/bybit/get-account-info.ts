@@ -11,7 +11,7 @@ export async function getAccountInfo(
 ): Promise<IBybitApiResponse<IBybitAccountInfo>> {
   const { apiKey, apiSecret } = credentials;
   const queryString = "accountType=UNIFIED";
-  const { signature, timestamp } = signBybitRequest(
+  const { signature, timestamp } = await signBybitRequest(
     apiSecret,
     apiKey,
     queryString,

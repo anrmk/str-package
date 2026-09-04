@@ -15,7 +15,7 @@ export async function getWalletBalance(
   });
   const queryString = query.toString();
 
-  const { signature, timestamp } = signBybitRequest(
+  const { signature, timestamp } = await signBybitRequest(
     apiSecret,
     apiKey,
     queryString,

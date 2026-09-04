@@ -11,7 +11,7 @@ export async function getApiKeyInfo(
     throw new Error("ByBit API key and API secret are required");
   }
 
-  const { signature, timestamp } = signBybitRequest(apiSecret, apiKey);
+  const { signature, timestamp } = await signBybitRequest(apiSecret, apiKey);
 
   let bybitRes: Response;
   try {

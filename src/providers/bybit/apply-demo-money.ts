@@ -17,7 +17,7 @@ export async function applyDemoMoney(
   const { apiKey, apiSecret } = credentials;
 
   const requestBody = JSON.stringify(payload);
-  const { signature, timestamp } = signBybitRequest(apiSecret, apiKey, requestBody);
+  const { signature, timestamp } = await signBybitRequest(apiSecret, apiKey, requestBody);
   
   let bybitRes: Response;
   try {
