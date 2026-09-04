@@ -1,3 +1,4 @@
+export * from "./client"
 export * from "./providers/bybit";
 export * from "./utils/bybitHelper";
 export * from "./utils/challengeHelper";
