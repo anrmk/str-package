@@ -5,7 +5,8 @@ import { signBybitRequest } from "../../utils/bybitHelper";
 
 // GET /api/bybit/wallet-balance?accountType=UNIFIED
 export async function getWalletBalance(
-  credentials: IBybitCredentials
+  credentials: IBybitCredentials,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitWalletAccount>> {
   const { apiKey, apiSecret } = credentials;
 
@@ -15,11 +16,11 @@ export async function getWalletBalance(
   });
   const queryString = query.toString();
 
-  const { signature, timestamp } = await signBybitRequest(
-    apiSecret,
-    apiKey,
+  const { signature, timestamp } = signBybitRequest({
+    credentials,
     queryString,
-  );
+    timeOffset,
+  });
 
   let bybitRes: Response;
   try {

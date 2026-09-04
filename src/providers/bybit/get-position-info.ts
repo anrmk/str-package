@@ -15,9 +15,8 @@ export async function getPositionInfo(
   symbol?: string,
   settleCoin?: string,
   cursor?: string,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitPositionInfo>>> {
-  const { apiKey, apiSecret } = credentials;
-
   const query = new URLSearchParams({
     category: category ?? "linear",
     limit: "50", //default limit
@@ -37,11 +36,11 @@ export async function getPositionInfo(
 
   const queryString = query.toString();
 
-  const { signature, timestamp } = await signBybitRequest(
-    apiSecret,
-    apiKey,
+  const { signature, timestamp } = signBybitRequest({
+    credentials,
     queryString,
-  );
+    timeOffset,
+  });
 
   let bybitRes: Response;
   try {
@@ -49,7 +48,7 @@ export async function getPositionInfo(
       `${BYBIT_CONSTANTS.baseUrl}/v5/position/list?${queryString}`,
       {
         headers: {
-          "X-BAPI-API-KEY": apiKey,
+          "X-BAPI-API-KEY": credentials.apiKey,
           "X-BAPI-SIGN": signature,
           "X-BAPI-SIGN-TYPE": "2",
           "X-BAPI-TIMESTAMP": timestamp,

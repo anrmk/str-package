@@ -55,3 +55,8 @@ export type IBybitClosedPnlResponse = {
   nextPageCursor?: string;
 };
 
+export type IBybitSignRequest = {
+    credentials: IBybitCredentials,
+    queryString?: string;
+    timeOffset?: number;
+};

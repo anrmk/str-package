@@ -8,6 +8,7 @@ export async function getClosedPnl(
   startTime?: number,
   endTime?: number,
   cursor?: string,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>> {
   const { apiKey, apiSecret } = credentials;
   const query = new URLSearchParams({
@@ -30,11 +31,11 @@ export async function getClosedPnl(
 
   const queryString = query.toString();
 
-  const { signature, timestamp } = await signBybitRequest(
-    apiSecret,
-    apiKey,
+  const { signature, timestamp } = signBybitRequest({
+    credentials,
     queryString,
-  );
+    timeOffset,
+  });
 
   let bybitRes: Response;
   try {

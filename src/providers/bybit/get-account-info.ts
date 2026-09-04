@@ -8,14 +8,16 @@ import { BYBIT_CONSTANTS } from "./constants";
 
 export async function getAccountInfo(
   credentials: IBybitCredentials,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitAccountInfo>> {
   const { apiKey, apiSecret } = credentials;
   const queryString = "accountType=UNIFIED";
-  const { signature, timestamp } = await signBybitRequest(
-    apiSecret,
-    apiKey,
+  
+  const { signature, timestamp } = signBybitRequest({
+    credentials,
     queryString,
-  );
+    timeOffset
+  });
 
   let bybitRes: Response;
   try {

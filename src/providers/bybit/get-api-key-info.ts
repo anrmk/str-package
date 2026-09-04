@@ -4,20 +4,18 @@ import { signBybitRequest } from "../../utils/bybitHelper";
 
 export async function getApiKeyInfo(
   credentials: IBybitCredentials,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiKeyInfo>> {
-  const { apiKey, apiSecret } = credentials;
-
-  if (!apiKey || !apiSecret) {
-    throw new Error("ByBit API key and API secret are required");
-  }
-
-  const { signature, timestamp } = await signBybitRequest(apiSecret, apiKey);
+  const { signature, timestamp } = signBybitRequest({
+    credentials,
+    timeOffset,
+  });
 
   let bybitRes: Response;
   try {
     bybitRes = await fetch(`${BYBIT_CONSTANTS.baseUrl}/v5/user/query-api`, {
       headers: {
-        "X-BAPI-API-KEY": apiKey,
+        "X-BAPI-API-KEY": credentials.apiKey,
         "X-BAPI-SIGN": signature,
         "X-BAPI-SIGN-TYPE": "2",
         "X-BAPI-TIMESTAMP": timestamp,
