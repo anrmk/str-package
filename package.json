@@ -1,6 +1,6 @@
 {
   "name": "@anrmk/str-package",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Shared providers, types, and utils for STR services",
   "license": "MIT",
   "type": "module",
