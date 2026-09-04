@@ -23,6 +23,7 @@ export class BybitClient {
     }
 
     async getApiKeyInfo(): Promise<IBybitApiResponse<IBybitApiKeyInfo>> {
+        console.log(this.credentials, this.timeOffset);
         return await getApiKeyInfo(this.credentials, this.timeOffset);
     }
 
