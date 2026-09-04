@@ -36,6 +36,5 @@ export class BybitClient {
 
     async getWalletBalance() {
         // Implement the logic to get wallet balance from Bybit API
-
     }
 }

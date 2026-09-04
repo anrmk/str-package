@@ -13,11 +13,17 @@ import { IBybitDemoApplyMoney } from "../../types/bybit/IBybitDemoApplyMoney";
 export async function applyDemoMoney(
   credentials: IBybitCredentials,
   payload: IBybitDemoApplyMoneyRequest,
+  timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitDemoApplyMoney>> {
   const { apiKey, apiSecret } = credentials;
 
   const requestBody = JSON.stringify(payload);
-  const { signature, timestamp } = signBybitRequest(apiSecret, apiKey, requestBody);
+    const { signature, timestamp } = signBybitRequest({
+    credentials,
+    timeOffset 
+  });
+
+  //const { signature, timestamp } = signBybitRequest(apiSecret, apiKey, requestBody);
   
   let bybitRes: Response;
   try {
