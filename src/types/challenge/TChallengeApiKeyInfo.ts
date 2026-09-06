@@ -5,6 +5,7 @@ export type TChallengeApiKeyInfo = {
     bybitApiKeyId: string;
     note: string;
     apiKey: string;
+    secret: string;
     readOnly: boolean;
     permissions: string[];
     ips: string[];
