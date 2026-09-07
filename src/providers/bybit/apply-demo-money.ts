@@ -15,15 +15,14 @@ export async function applyDemoMoney(
   payload: IBybitDemoApplyMoneyRequest,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitDemoApplyMoney>> {
-  const { apiKey, apiSecret } = credentials;
+  const { apiKey } = credentials;
 
   const requestBody = JSON.stringify(payload);
-    const { signature, timestamp } = signBybitRequest({
+  const { signature, timestamp } = signBybitRequest({
     credentials,
+    queryString: requestBody,
     timeOffset 
   });
-
-  //const { signature, timestamp } = signBybitRequest(apiSecret, apiKey, requestBody);
   
   let bybitRes: Response;
   try {
