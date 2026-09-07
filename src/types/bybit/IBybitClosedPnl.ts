@@ -20,3 +20,9 @@ export type IBybitClosedPnl = {
   openFee: string; //deprecated?
   closeFee: string; //deprecated?
 };
+
+export type IBybitClosedPnlRequest = {
+  startTime?: number,
+  endTime?: number,
+  cursor?: string,
+};

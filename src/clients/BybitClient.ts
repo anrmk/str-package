@@ -1,41 +1,63 @@
-import { IBybitApiKeyInfo, IBybitApiResponse, IBybitCredentials } from "../types/bybit";
+import type {
+  IBybitApiKeyInfo,
+  IBybitApiResponse,
+  IBybitClosedPnlRequest,
+  IBybitCredentials,
+  IBybitDemoApplyMoneyRequest,
+} from "../types/bybit";
 import { syncBybitServerTime } from "../utils/bybitHelper";
 
-import { getApiKeyInfo } from "../providers/bybit";
+import {
+  getApiKeyInfo,
+  getClosedPnl,
+  getAccountInfo,
+  getWalletBalance,
+  applyDemoMoney,
+} from "../providers/bybit";
 
 export class BybitClient {
-    private timeOffset = 0;
-    private readonly ready: Promise<void>;
+  private timeOffset = 0;
+  private readonly ready: Promise<void>;
 
-    constructor() {
-        this.ready = (async () => {
-            this.timeOffset = await syncBybitServerTime();
-        })();
-    }
+  constructor() {
+    this.ready = (async () => {
+      this.timeOffset = await syncBybitServerTime();
+    })();
+  }
 
-    async applyDemoMoney() {
-        // Implement the logic to apply demo money to the Bybit account
-    }
+  async applyDemoMoney(
+    credentials: IBybitCredentials,
+    payload: IBybitDemoApplyMoneyRequest,
+  ) {
+    await this.ready;
+    // Implement the logic to apply demo money to the Bybit account using the provided payload
+    return await applyDemoMoney(credentials, payload, this.timeOffset);
+  }
 
-    async getAccountInfo() {
-        // Implement the logic to get account info from Bybit API
-    }
+  async getAccountInfo(
+    credentials: IBybitCredentials,
+  ) {
+    await this.ready;
+    return await getAccountInfo(credentials, this.timeOffset);
+  }
 
-    async getApiKeyInfo(credentials: IBybitCredentials): Promise<IBybitApiResponse<IBybitApiKeyInfo>> {
-        await this.ready;
-        console.log(credentials, this.timeOffset);
-        return await getApiKeyInfo(credentials, this.timeOffset);
-    }
+  async getApiKeyInfo(
+    credentials: IBybitCredentials,
+  ): Promise<IBybitApiResponse<IBybitApiKeyInfo>> {
+    await this.ready;
+    return await getApiKeyInfo(credentials, this.timeOffset);
+  }
 
-    async getClosedPnl() {
-        // Implement the logic to get closed PnL from Bybit API
-    }
+  async getClosedPnl(
+    credentials: IBybitCredentials,
+    payload: IBybitClosedPnlRequest
+  ) {
+    await this.ready;
+    return await getClosedPnl(credentials, payload, this.timeOffset);
+  }
 
-    async getPositionInfo() {
-        // Implement the logic to get position info from Bybit API
-    }
-
-    async getWalletBalance() {
-        // Implement the logic to get wallet balance from Bybit API
-    }
+  async getWalletBalance(credentials: IBybitCredentials) {
+    await this.ready;
+    return await getWalletBalance(credentials, this.timeOffset);
+  }
 }

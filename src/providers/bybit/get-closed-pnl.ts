@@ -1,13 +1,11 @@
 import { BYBIT_CONSTANTS } from "./constants";
-import { IBybitCredentials, IBybitApiResponse, IBybitApiResponseList, IBybitClosedPnl } from "../../types/bybit";
+import { IBybitCredentials, IBybitApiResponse, IBybitApiResponseList, IBybitClosedPnl, IBybitClosedPnlRequest } from "../../types/bybit";
 import { signBybitRequest } from "../../utils/bybitHelper";
 
 // GET /api/bybit/wallet-balance?accountType=UNIFIED
 export async function getClosedPnl(
   credentials: IBybitCredentials,
-  startTime?: number,
-  endTime?: number,
-  cursor?: string,
+  payload: IBybitClosedPnlRequest,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>> {
   const { apiKey, apiSecret } = credentials;
@@ -17,16 +15,16 @@ export async function getClosedPnl(
     limit: "50", //default limit
   });
 
-  if (typeof startTime === "number") {
-    query.set("startTime", String(startTime));
+  if (typeof payload.startTime === "number") {
+    query.set("startTime", String(payload.startTime));
   }
 
-  if (typeof endTime === "number") {
-    query.set("endTime", String(endTime));
+  if (typeof payload.endTime === "number") {
+    query.set("endTime", String(payload.endTime));
   }
 
-  if (typeof cursor === "string") {
-    query.set("cursor", String(cursor));
+  if (typeof payload.cursor === "string") {
+    query.set("cursor", String(payload.cursor));
   }
 
   const queryString = query.toString();
