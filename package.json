@@ -1,6 +1,6 @@
 {
   "name": "@anrmk/str-package",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "Shared providers, types, and utils for STR services",
   "license": "MIT",
   "type": "module",
@@ -21,10 +21,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./client": {
-      "types": "./dist/client/index.d.ts",
-      "import": "./dist/client/index.js",
-      "require": "./dist/client/index.cjs"
+    "./clients": {
+      "types": "./dist/clients/index.d.ts",
+      "import": "./dist/clients/index.js",
+      "require": "./dist/clients/index.cjs"
     },
     "./providers/bybit": {
       "types": "./dist/providers/bybit/index.d.ts",
