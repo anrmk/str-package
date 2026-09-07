@@ -7,9 +7,8 @@ export default defineConfig({
     "types/index": "src/types/index.ts",
     "types/bybit/index": "src/types/bybit/index.ts",
     "types/challenge/index": "src/types/challenge/index.ts",
-    "utils/bybitHelper": "src/utils/bybitHelper.ts",
-    "utils/challengeHelper": "src/utils/challengeHelper.ts",
-    "utils/helper": "src/utils/helper.ts",
+    "utils/index": "src/utils/index.ts",
+    "clients/index": "src/clients/index.ts"
   },
   format: ["esm", "cjs"],
   dts: true,
