@@ -4,10 +4,11 @@ import { syncBybitServerTime } from "../utils/bybitHelper";
 import { getApiKeyInfo } from "../providers/bybit";
 
 export class BybitClient {
-    private readonly timeOffset: number = 0;
+    private timeOffset = 0;
+    private readonly ready: Promise<void>;
+
     constructor() {
-        // Initialize the client if needed
-        (async () => {
+        this.ready = (async () => {
             this.timeOffset = await syncBybitServerTime();
         })();
     }
@@ -21,6 +22,7 @@ export class BybitClient {
     }
 
     async getApiKeyInfo(credentials: IBybitCredentials): Promise<IBybitApiResponse<IBybitApiKeyInfo>> {
+        await this.ready;
         console.log(credentials, this.timeOffset);
         return await getApiKeyInfo(credentials, this.timeOffset);
     }
