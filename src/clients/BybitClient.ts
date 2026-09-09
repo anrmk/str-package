@@ -20,9 +20,24 @@ export class BybitClient {
   private readonly ready: Promise<void>;
 
   constructor() {
-    this.ready = (async () => {
-      this.timeOffset = await syncBybitServerTime();
-    })();
+    this.ready = this.initializeTimeOffset();
+  }
+
+  private async initializeTimeOffset(): Promise<void> {
+    const maxAttempts = 3;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      try {
+        this.timeOffset = await syncBybitServerTime();
+        return;
+      } catch (error) {
+        if (attempt === maxAttempts) {
+          throw error;
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, attempt * 2_000));
+      }
+    }
   }
 
   async applyDemoMoney(
