@@ -8,7 +8,7 @@ export async function getWalletBalance(
   credentials: IBybitCredentials,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitWalletAccount>> {
-  const { apiKey, apiSecret } = credentials;
+  const { apiKey } = credentials;
 
   const query = new URLSearchParams({
     accountType: "UNIFIED",

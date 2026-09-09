@@ -57,6 +57,7 @@ export type IBybitClosedPnlResponse = {
 
 export type IBybitSignRequest = {
     credentials: IBybitCredentials,
+    recvWindow?: string;
     queryString?: string;
     timeOffset?: number;
 };

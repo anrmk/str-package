@@ -8,7 +8,7 @@ export async function getClosedPnl(
   payload: IBybitClosedPnlRequest,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>> {
-  const { apiKey, apiSecret } = credentials;
+  const { apiKey } = credentials;
   const query = new URLSearchParams({
     category: "linear",
     //symbol: "BTCUSDT",

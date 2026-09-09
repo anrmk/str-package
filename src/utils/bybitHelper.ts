@@ -1,18 +1,16 @@
 import { createHmac } from "crypto";
 import { env } from "node:process";
 import { getServerTime } from "../providers/bybit";
-import type { IBybitServerTime, IBybitSignRequest } from "../types/bybit";
-
-const BYBIT_RECV_WINDOW_TIMEOUT_MS =
-  env.NEXT_PUBLIC_BYBIT_RECV_WINDOW_TIMEOUT_MS ?? "20000";
+import { BYBIT_CONSTANTS } from "../providers/bybit/constants";
+import type { IBybitSignRequest } from "../types/bybit";
 
 export function signBybitRequest(request: IBybitSignRequest) {
   const { credentials, queryString, timeOffset } = request;
   const { apiSecret, apiKey } = credentials;
 
   const timestamp = getBybitTimestamp(timeOffset);
-  console.log("Bybit server time timestamp:", timestamp);
-  const payload = `${timestamp}${apiKey}${BYBIT_RECV_WINDOW_TIMEOUT_MS}${queryString ?? ""}`;
+
+  const payload = `${timestamp}${apiKey}${BYBIT_CONSTANTS.recvWindowTimeoutMs}${queryString ?? ""}`;
   const signature = createHmac("sha256", apiSecret)
     .update(payload)
     .digest("hex");
@@ -21,29 +19,20 @@ export function signBybitRequest(request: IBybitSignRequest) {
 }
 
 export async function syncBybitServerTime(): Promise<number> {
-  const requestStart = Date.now();
+  const localTimeBefore = Date.now();
   const { result } = await getServerTime();
-  const requestEnd = Date.now();
-  const serverTime = Number(result.timeSecond) * 1000;
+
+  const serverTime = parseInt(result.timeNano, 10) / 1000000;
+  const localTimeAfter = Date.now();
 
   // Estimate the local time at which Bybit generated
   // the response by using the midpoint.
-  const localMidpoint = requestStart + (requestEnd - requestStart) / 2;
+  const estimatedLatency = (localTimeAfter - localTimeBefore) / 2;
+  const timeOffset = Math.round(serverTime - (localTimeBefore + estimatedLatency));
 
-  const bybitTimeOffset = serverTime - localMidpoint;
-
-  console.log({
-    serverTime,
-    requestStart,
-    requestEnd,
-    latency: requestEnd - requestStart,
-    bybitTimeOffset,
-  });
-
-  return bybitTimeOffset;
+  return timeOffset;
 }
 
 export function getBybitTimestamp(timeOffset: number = 0): string {
-  // Small safety margin: keep request slightly behind server.
-  return String(Date.now() + timeOffset - 250);
+  return String(Date.now() + timeOffset);
 }
