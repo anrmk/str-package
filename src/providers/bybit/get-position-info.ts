@@ -4,34 +4,32 @@ import {
   IBybitApiResponse,
   IBybitApiResponseList,
   IBybitPositionInfo,
+  IBybitPositionInfoRequest,
 } from "../../types/bybit";
 
 import { signBybitRequest } from "../../utils/bybitHelper";
 
+const DEFAULT_SETTLE_COIN = "USDT";
+const DEFAULT_CATEGORY = "linear";
+
 // Query real-time position data, such as position size, cumulative realized PNL, etc.
 export async function getPositionInfo(
   credentials: IBybitCredentials,
-  category?: string,
-  symbol?: string,
-  settleCoin?: string,
-  cursor?: string,
+  payload: IBybitPositionInfoRequest,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitPositionInfo>>> {
   const query = new URLSearchParams({
-    category: category ?? "linear",
+    settleCoin: payload.settleCoin ?? DEFAULT_SETTLE_COIN,
+    category: payload.category ?? DEFAULT_CATEGORY,
     limit: "50", //default limit
   });
 
-  if (typeof symbol === "string") {
-    query.set("symbol", String(symbol));
+  if (typeof payload?.symbol === "string") {
+    query.set("symbol", String(payload.symbol));
   }
 
-  if (typeof settleCoin === "string") {
-    query.set("settleCoin", String(settleCoin));
-  }
-
-  if (typeof cursor === "string") {
-    query.set("cursor", String(cursor));
+  if (typeof payload?.cursor === "string") {
+    query.set("cursor", String(payload.cursor));
   }
 
   const queryString = query.toString();

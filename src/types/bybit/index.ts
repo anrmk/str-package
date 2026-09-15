@@ -1,6 +1,7 @@
-import type { IBybitWalletAccount, IBybitCoinBalance } from "./IBybitWalletBalance";
+import type { IBybitWalletAccount } from "./IBybitWalletBalance";
 import type { IBybitClosedPnl } from "./IBybitClosedPnl";
 import type { IBybitCredentials } from "./IBybitCredentials";
+import type { IBybitPositionInfo } from "./IBybitPositionInfo";
 
 export { IBybitAccountType, IBybitCoinType, IBybitApiKeyVipLevel } from "./enums";
 export type { IBybitClosedPnl } from "./IBybitClosedPnl";
@@ -33,6 +34,7 @@ export type IBybitApiResponseList<T> = {
 type IBybitResponse = {
   updatedAt: number;
 };
+
 export type IBybitWalletResponse = IBybitResponse & {
   topic: string;
   list?: IBybitWalletAccount[];
@@ -56,8 +58,22 @@ export type IBybitClosedPnlResponse = {
 };
 
 export type IBybitSignRequest = {
-    credentials: IBybitCredentials,
-    recvWindow?: string;
-    queryString?: string;
-    timeOffset?: number;
+  credentials: IBybitCredentials,
+  recvWindow?: string;
+  queryString?: string;
+  timeOffset?: number;
+};
+
+export type IBybitPositionInfoRequest = {
+  credentials: IBybitCredentials;
+  category?: string;
+  symbol?: string;
+  settleCoin?: string;
+  cursor?: string;
+};
+
+export type IBybitPositionInfoResponse = {
+  category: string;
+  list?: IBybitPositionInfo[];
+  nextPageCursor?: string;
 };
