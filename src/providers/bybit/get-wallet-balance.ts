@@ -12,7 +12,7 @@ export async function getWalletBalance(
 
   const query = new URLSearchParams({
     accountType: "UNIFIED",
-    coin: "USDT",
+    coin: BYBIT_CONSTANTS.defaultCoin,
   });
   const queryString = query.toString();
 

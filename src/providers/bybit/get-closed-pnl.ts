@@ -11,7 +11,7 @@ export async function getClosedPnl(
   const { apiKey } = credentials;
   const query = new URLSearchParams({
     category: "linear",
-    //symbol: "BTCUSDT",
+    //symbol: BYBIT_CONSTANTS.defaultCoin, //get all coins-pnl
     limit: "50", //default limit
   });
 
@@ -66,5 +66,14 @@ export async function getClosedPnl(
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 
-  return bybitJson;
+  const filteredData = bybitJson.result.list.filter((item: IBybitClosedPnl) => item.symbol === BYBIT_CONSTANTS.defaultCoin);
+
+  return {
+    ...bybitJson,
+    result: {
+      ...bybitJson.result,
+      list: filteredData,
+      olist: bybitJson.result.list,
+    },
+  };
 }

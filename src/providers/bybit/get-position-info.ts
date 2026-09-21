@@ -9,7 +9,6 @@ import {
 
 import { signBybitRequest } from "../../utils/bybitHelper";
 
-const DEFAULT_SETTLE_COIN = "USDT";
 const DEFAULT_CATEGORY = "linear";
 
 // Query real-time position data, such as position size, cumulative realized PNL, etc.
@@ -19,7 +18,7 @@ export async function getPositionInfo(
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitPositionInfo>>> {
   const query = new URLSearchParams({
-    settleCoin: payload.settleCoin ?? DEFAULT_SETTLE_COIN,
+    settleCoin: payload.settleCoin ?? BYBIT_CONSTANTS.defaultCoin,
     category: payload.category ?? DEFAULT_CATEGORY,
     limit: "50", //default limit
   });
