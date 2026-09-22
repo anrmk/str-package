@@ -41,7 +41,6 @@ export type IBybitWalletResponse = IBybitResponse & {
 };
 
 export type IBybitClosedPnlRequest = {
-  credentials: IBybitCredentials;
   category: string;
   symbol?: string;
   startTime?: number;
@@ -65,7 +64,6 @@ export type IBybitSignRequest = {
 };
 
 export type IBybitPositionInfoRequest = {
-  credentials: IBybitCredentials;
   category?: string;
   symbol?: string;
   settleCoin?: string;

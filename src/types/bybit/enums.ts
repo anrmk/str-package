@@ -31,3 +31,11 @@ export enum IBybitApiKeyVipLevel {
   VIP_4 = "VIP 4",
   VIP_5 = "VIP 5",
 }
+
+// Position side. Buy: long, Sell: short
+// return an empty string "" for an empty position
+export enum IBybitPositionSide {
+  SELL = "Sell",
+  BUY = "Buy",
+  EMPTY = "",
+}

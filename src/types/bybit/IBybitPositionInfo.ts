@@ -1,41 +1,41 @@
+import { IBybitPositionSide } from "./enums";
 import { IBybitCredentials } from "./IBybitCredentials";
 
 // Raw row returned by Bybit /v5/position/list.
 export type IBybitPositionInfo = {
-  challengeId: string;
   positionIdx: number;
   riskId: number;
   riskLimitValue: string;
   symbol: string;
-  side: string;
+  side: IBybitPositionSide ;
   size: string;
   avgPrice: string;
   positionValue: string;
-  tradeMode: number;
-  positionStatus: string;
   autoAddMargin: number;
-  adlRankIndicator: number;
+  positionStatus: string;
   leverage: string;
-  positionBalance: string;
+  breakEvenPrice: string;
   markPrice: string;
   liqPrice: string;
-  bustPrice: string;
-  positionMM: string;
   positionIM: string;
-  tpslMode: string;
+  positionIMByMp: string;
+  positionMM: string;
+  positionMMByMp: string;
   takeProfit: string;
   stopLoss: string;
   trailingStop: string;
+  sessionAvgPrice: string;
   unrealisedPnl: string;
   curRealisedPnl: string;
   cumRealisedPnl: string;
+  adlRankIndicator: number;
+  createdTime: string;
+  updatedTime: string;
+  openTime: number;
   seq: number;
   isReduceOnly: boolean;
   mmrSysUpdatedTime: string;
   leverageSysUpdatedTime: string;
-  sessionAvgPrice: string;
-  createdTime: string;
-  updatedTime: string;
 };
 
 export type IBybitPositionInfoRequest = {
