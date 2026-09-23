@@ -66,7 +66,7 @@ export async function getClosedPnl(
     throw new Error(bybitJson.retMsg ?? "ByBit error");
   }
 
-  const filteredData = bybitJson.result.list.filter((item: IBybitClosedPnl) => item.symbol === BYBIT_CONSTANTS.defaultCoin);
+  const filteredData = bybitJson.result.list.filter((item: IBybitClosedPnl) => item.symbol.includes(BYBIT_CONSTANTS.defaultCoin));
 
   return {
     ...bybitJson,
