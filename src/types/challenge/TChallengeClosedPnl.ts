@@ -19,4 +19,5 @@ export type TChallengeClosedPnl = {
   createdTime: string;
   updatedTime: string;
   updatedAt: string;
+  isTradingDayRecord: boolean;
 };

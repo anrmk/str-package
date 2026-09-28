@@ -18,10 +18,10 @@ export type TChallengeRule = {
   mode: TChallengeMode;
   tradingPeriod: string;
   minTradingDays: number;
-  stopLossRequired: boolean;
-  dailyDrawdownPct: number;
+  stopLossPct: number;
   maxLossPct: number;
   minLossPct: number;
+  dailyDrawdownPct: number;
   profitTargetPct: number;
   feePolicy: string;
   prohibitedActions: string[];
