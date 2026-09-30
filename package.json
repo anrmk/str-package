@@ -1,6 +1,6 @@
 {
   "name": "@anrmk/str-package",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Shared providers, types, and utils for STR services",
   "license": "MIT",
   "type": "module",
@@ -55,11 +55,6 @@
       "types": "./dist/utils/bybitHelper.d.ts",
       "import": "./dist/utils/bybitHelper.js",
       "require": "./dist/utils/bybitHelper.cjs"
-    },
-    "./utils/challengeHelper": {
-      "types": "./dist/utils/challengeHelper.d.ts",
-      "import": "./dist/utils/challengeHelper.js",
-      "require": "./dist/utils/challengeHelper.cjs"
     },
     "./utils/helper": {
       "types": "./dist/utils/helper.d.ts",

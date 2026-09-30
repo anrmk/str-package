@@ -1,6 +1,8 @@
 // Normalized closed PnL record returned by internal API (DB).
 export type TChallengeClosedPnl = {
-  challengeId: string;
+  readonly id: string;
+  readonly challengeId: string;
+
   symbol: string;
   orderId: string;
   side: string;
@@ -18,6 +20,8 @@ export type TChallengeClosedPnl = {
   leverage: number;
   createdTime: string;
   updatedTime: string;
-  updatedAt: string;
-  isTradingDayRecord: boolean;
+  readonly isTradingDayRecord: boolean; // extended: indicates if the record belongs to a trading day
+
+  readonly createdAt: string;
+  readonly updatedAt: string;
 };

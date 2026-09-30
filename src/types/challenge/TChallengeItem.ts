@@ -1,39 +1,28 @@
 import type {
-  TChallengeType,
-  TChallengeMode,
-  TTradingType,
-  TDrawdownType,
   TChallengeProgress,
   TChallengeRule,
   TChallengeWalletBalance,
   TChallengeStatistics,
   TChallengeApiKeyInfo,
-  TChallengeStatus
+  TChallengeStatus,
 } from ".";
-//import type { TChallengeStats, TChallengeProgress, TChallengeRule, TChallengeWallet, TTradingType, TDrawdownType } from ".";
 
-export type TChallengeItem = {
-  id?: string;
-  challengeId: string;
-  ctype: TChallengeType;
-  capital: number;
-  currency: string;
-  ttype: TTradingType;
-  ddtype: TDrawdownType;
+type TChallengeBase = {
+  readonly id: string;
   readonly status: TChallengeStatus;
   readonly statusDescription: string;
+
   provider: string;
+  capital: number;
+  currency: string;
   startDate: string;
   endDate: string;
 
-  apiKey: string;
-  apiSecret: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+};
 
-  daysActive: number;
-  daysRemaining: number;
-  hasCredentials: boolean;
-  apiKeyHint?: string;
-  
+export type TChallengeItem = TChallengeBase & {
   apiKeyInfo?: TChallengeApiKeyInfo;
   statistics?: TChallengeStatistics;
   progress?: TChallengeProgress;
@@ -41,27 +30,14 @@ export type TChallengeItem = {
   wallet?: TChallengeWalletBalance;
 };
 
-export type TChallengeListItem = {
-  id: string;
-  
-  capital: number | null;
-  currency: string | null;
-  ttype: TTradingType | null;
-  ddtype: TDrawdownType | null;
-  readonly status: TChallengeStatus;
-  readonly statusDescription: string;
-  provider: string;
-  //expiresAt: string;
-  startDate: string;
-  endDate: string | null;
+export type TChallengeListItem = TChallengeBase & {
+  statistics?: TChallengeStatistics;
+  progress?: TChallengeProgress;
+  rule?: TChallengeRule;
+  wallet?: TChallengeWalletBalance;
 
   daysActive: number | null;
   daysRemaining: number | null;
   apiKeyHint?: string;
   hasCredentials: boolean;
-
-  statistics?: TChallengeStatistics | null;
-  progress?: TChallengeProgress | null;
-  rule?: TChallengeRule | null;
-  wallet?: TChallengeWalletBalance | null;
 };

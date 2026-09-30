@@ -1,9 +1,10 @@
 export type TChallengeAccountInfo = {
-    challengeId: string;
+    readonly challengeId: string;
 
     unifiedMarginStatus: number;
     marginMode: string;
     isMasterTrader: boolean;
     spotHedgingStatus: "ON" | "OFF";
-    updatedAt: string;
+
+    readonly updatedAt: string;
 }

@@ -13,24 +13,25 @@ export type TChallengeStatus = "ACTIVE" | "EXPIRED" | "COMPLETED" | "FAILED";
 
 export type TChallengeRule = {
   readonly id: string;
+  readonly nextRuleId: string | null;
+
   name: string;
   type: TChallengeType;
   mode: TChallengeMode;
   tradingPeriod: string;
   minTradingDays: number;
-  stopLossPct: number;
+  positionDrawdownPct: number;
   maxLossPct: number;
   minLossPct: number;
   dailyDrawdownPct: number;
   profitTargetPct: number;
   feePolicy: string;
   prohibitedActions: string[];
-  isActive: boolean;
+  tiers?: TChallengeTier[];
 
+  readonly isActive: boolean;
   readonly createdAt: string;
   readonly updatedAt: string;
-
-  tiers?: TChallengeTier[]
 };
 
 export interface TChallengeRuleGroup {

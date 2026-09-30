@@ -19,7 +19,6 @@ This library contains reusable Bybit providers, shared TypeScript types, and uti
 ### Utilities
 
 - `@anrmk/str-package/utils/bybitHelper`
-- `@anrmk/str-package/utils/challengeHelper`
 - `@anrmk/str-package/utils/helper`
 
 ## Install

@@ -1,6 +1,6 @@
 export type TChallengeStatistics = {
-  readonly id: string | null;
   readonly challengeId: string;
+
   totalClosedTradesCount: number;
   totalClosedTrades: number;
   totalLongTradesCount: number;
@@ -12,9 +12,11 @@ export type TChallengeStatistics = {
   totalLongWins: number;
   totalShortTrades: number;
   totalShortWins: number;
-  readonly updatedAt: string;
 
   loosesRate?: number;
   totalCumEntryValue?: number;
   totalCumExitValue?: number;
+
+  readonly createdAt: string;
+  readonly updatedAt: string;
 };

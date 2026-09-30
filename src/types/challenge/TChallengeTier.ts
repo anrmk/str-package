@@ -7,7 +7,7 @@ export type TChallengeTier = {
   capital: TChallengeCapital;
   currency: IBybitCoinType;
   priceUsd: number;
-  isActive: boolean;
+  readonly isActive: boolean;
   readonly createdAt: string;
   readonly updatedAt: string;
 };

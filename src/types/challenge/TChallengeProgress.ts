@@ -1,6 +1,6 @@
 export type TChallengeProgress = {
-  id: string | null;
-  challengeId: string;
+  readonly challengeId: string;
+  
   totalLoss: number;
   tradingDays: number;
   dailyDrawdown: number;
@@ -11,4 +11,7 @@ export type TChallengeProgress = {
   dailyMinEquity: number;
   dailyMaxUpdatedAt: string;
   dailyMinUpdatedAt: string;
+
+  readonly createdAt: string;
+  readonly updatedAt: string;
 };

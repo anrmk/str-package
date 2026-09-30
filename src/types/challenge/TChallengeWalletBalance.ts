@@ -1,7 +1,8 @@
 import { IBybitAccountType } from "../bybit/enums";
 
 export type TChallengeWalletBalance = {
-  challengeId: string;
+  readonly challengeId: string;
+
   accountType: IBybitAccountType;
   totalEquity: number;
   totalPerpUpl: number;
@@ -20,5 +21,7 @@ export type TChallengeWalletBalance = {
   cumRealisedPnl?: number;
   bonus?: number;
   coin: string;
-  updatedAt: string;
+
+  readonly createdAt: string;
+  readonly updatedAt: string;
 }

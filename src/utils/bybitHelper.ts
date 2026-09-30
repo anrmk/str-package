@@ -1,5 +1,4 @@
 import { createHmac } from "crypto";
-import { env } from "node:process";
 import { getServerTime } from "../providers/bybit";
 import { BYBIT_CONSTANTS } from "../providers/bybit/constants";
 import type { IBybitSignRequest } from "../types/bybit";

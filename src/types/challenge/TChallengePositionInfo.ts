@@ -1,5 +1,7 @@
 export type TChallengePositionInfo = {
-  challengeId: string;
+  readonly id: string;
+  readonly challengeId: string;
+
   positionIdx: number;
   riskId: number;
   riskLimitValue: number;
@@ -33,5 +35,6 @@ export type TChallengePositionInfo = {
   isReduceOnly: boolean;
   mmrSysUpdatedTime: string | null;
   leverageSysUpdatedTime: string | null;
-  updatedAt: string;
+
+  readonly updatedAt: string;
 };
