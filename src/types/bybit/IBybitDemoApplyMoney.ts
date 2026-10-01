@@ -12,13 +12,9 @@ export type IBybitDemoApplyMoneyRequest = {
   utaDemoApplyMoney: IBybitDemoApplyMoneyItem[];
 };
 
-export type IBybitDemoApplyMoneyPayload = IBybitDemoApplyMoneyRequest & {
-  challengeId?: string;
-};
-
 export type IBybitDemoApplyMoney = {
-    resultCode: string;
-    utaDemoApplyMoneyConfig: IBybitDemoApplyMoneyItem[];
-    orderStatus: string;
-    retMsg: string;
-}
+  resultCode: string;
+  utaDemoApplyMoneyConfig: IBybitDemoApplyMoneyItem[];
+  orderStatus: string;
+  retMsg: string;
+};

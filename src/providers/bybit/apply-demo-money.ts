@@ -3,7 +3,6 @@ import { BYBIT_CONSTANTS } from "./constants";
 import {
   IBybitCredentials,
   IBybitApiResponse,
-  IBybitAccountInfo,
   IBybitDemoApplyMoneyRequest,
 } from "../../types/bybit";
 import { signBybitRequest } from "../../utils/bybitHelper";
@@ -21,9 +20,9 @@ export async function applyDemoMoney(
   const { signature, timestamp } = signBybitRequest({
     credentials,
     queryString: requestBody,
-    timeOffset 
+    timeOffset,
   });
-  
+
   let bybitRes: Response;
   try {
     bybitRes = await fetch(
@@ -52,7 +51,7 @@ export async function applyDemoMoney(
   }
 
   const bybitJson =
-    (await bybitRes.json()) as IBybitApiResponse<IBybitAccountInfo>;
+    (await bybitRes.json()) as IBybitApiResponse<IBybitDemoApplyMoney>;
 
   if (bybitJson.retCode !== 0) {
     throw new Error(bybitJson.retMsg ?? "ByBit error");

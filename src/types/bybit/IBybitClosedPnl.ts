@@ -1,3 +1,5 @@
+import { IBybitCategory } from "../..";
+
 // Raw row returned by Bybit /v5/position/closed-pnl.
 export type IBybitClosedPnl = {
   symbol: string;
@@ -22,7 +24,10 @@ export type IBybitClosedPnl = {
 };
 
 export type IBybitClosedPnlRequest = {
-  startTime?: number,
-  endTime?: number,
-  cursor?: string,
+  category?: IBybitCategory.LINEAR | IBybitCategory.INVERSE;
+  symbol?: string;
+  startTime?: number;
+  endTime?: number;
+  limit?: number;
+  cursor?: string;
 };

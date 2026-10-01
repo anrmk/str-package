@@ -1,5 +1,5 @@
 import { BYBIT_CONSTANTS } from "./constants";
-import { IBybitApiResponse, IBybitWalletAccount, IBybitCredentials } from "../../types/bybit";
+import { IBybitApiResponse, IBybitWalletAccount, IBybitCredentials, IBybitAccountType } from "../../types/bybit";
 
 import { signBybitRequest } from "../../utils/bybitHelper";
 
@@ -11,7 +11,7 @@ export async function getWalletBalance(
   const { apiKey } = credentials;
 
   const query = new URLSearchParams({
-    accountType: "UNIFIED",
+    accountType: IBybitAccountType.UNIFIED,
     coin: BYBIT_CONSTANTS.defaultCoin,
   });
   const queryString = query.toString();

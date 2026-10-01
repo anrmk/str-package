@@ -1,7 +1,7 @@
 import type { IBybitApiKeyVipLevel } from "./enums";
 
 // https://bybit-exchange.github.io/docs/v5/user/apikey-info
-// Get the information of the api key. Use the api key pending to be checked to call the endpoint. 
+// Get the information of the api key. Use the api key pending to be checked to call the endpoint.
 // Both master and sub user's api key are applicable.
 export type IBybitApiKeyInfo = {
   id: string;
@@ -44,6 +44,6 @@ export type IBybitApiKeyPermissions = {
   Affiliate?: string[];
   BlockTrade?: string[];
   FiatBybitPay?: string[];
-   NFT?: string[];
+  NFT?: string[];
   CopyTrading?: string[];
 };

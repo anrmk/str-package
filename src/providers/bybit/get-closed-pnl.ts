@@ -1,5 +1,5 @@
 import { BYBIT_CONSTANTS } from "./constants";
-import { IBybitCredentials, IBybitApiResponse, IBybitApiResponseList, IBybitClosedPnl, IBybitClosedPnlRequest } from "../../types/bybit";
+import { IBybitCredentials, IBybitApiResponse, IBybitApiResponseList, IBybitClosedPnl, IBybitClosedPnlRequest, IBybitCategory } from "../../types/bybit";
 import { signBybitRequest } from "../../utils/bybitHelper";
 
 // GET /api/bybit/wallet-balance?accountType=UNIFIED
@@ -10,8 +10,7 @@ export async function getClosedPnl(
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitClosedPnl>>> {
   const { apiKey } = credentials;
   const query = new URLSearchParams({
-    category: "linear",
-    //symbol: BYBIT_CONSTANTS.defaultCoin, //get all coins-pnl
+    category: IBybitCategory.LINEAR,
     limit: "50", //default limit
   });
 

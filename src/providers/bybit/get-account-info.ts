@@ -10,13 +10,13 @@ export async function getAccountInfo(
   credentials: IBybitCredentials,
   timeOffset?: number,
 ): Promise<IBybitApiResponse<IBybitAccountInfo>> {
-  const { apiKey, apiSecret } = credentials;
+  const { apiKey } = credentials;
   const queryString = "accountType=UNIFIED";
-  
+
   const { signature, timestamp } = signBybitRequest({
     credentials,
     queryString,
-    timeOffset
+    timeOffset,
   });
 
   let bybitRes: Response;

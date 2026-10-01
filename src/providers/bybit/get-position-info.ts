@@ -5,11 +5,10 @@ import {
   IBybitApiResponseList,
   IBybitPositionInfo,
   IBybitPositionInfoRequest,
+  IBybitCategory,
 } from "../../types/bybit";
 
 import { signBybitRequest } from "../../utils/bybitHelper";
-
-const DEFAULT_CATEGORY = "linear";
 
 // Query real-time position data, such as position size, cumulative realized PNL, etc.
 export async function getPositionInfo(
@@ -19,8 +18,8 @@ export async function getPositionInfo(
 ): Promise<IBybitApiResponse<IBybitApiResponseList<IBybitPositionInfo>>> {
   const query = new URLSearchParams({
     settleCoin: payload.settleCoin ?? BYBIT_CONSTANTS.defaultCoin,
-    category: payload.category ?? DEFAULT_CATEGORY,
-    limit: "50", //default limit
+    category: payload.category ?? IBybitCategory.LINEAR,
+    limit: "20", //default limit
   });
 
   if (typeof payload?.symbol === "string") {

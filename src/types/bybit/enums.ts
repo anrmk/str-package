@@ -39,3 +39,16 @@ export enum IBybitPositionSide {
   BUY = "Buy",
   EMPTY = "",
 }
+
+export enum IBybitCategory {
+  LINEAR = "linear",
+  INVERSE = "inverse",
+  OPTION = "option",
+  SPOT = "spot",
+}
+
+export enum IBybitMarginMode {
+  ISOLATED_MARGIN = "ISOLATED_MARGIN",
+  REGULAR_MARGIN = "REGULAR_MARGIN",
+  PORTFOLIO_MARGIN = "PORTFOLIO_MARGIN",
+}

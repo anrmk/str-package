@@ -42,3 +42,9 @@ export type IBybitCoinBalance = {
   coin: string;
   spotBorrow: string;
 };
+
+// export type IBybitWalletResponse = {
+//   topic: string;
+//   list?: IBybitWalletAccount[];
+//   updatedAt: number;
+// };

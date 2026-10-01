@@ -5,3 +5,4 @@ export { getClosedPnl } from "./get-closed-pnl";
 export { getPositionInfo } from "./get-position-info";
 export { applyDemoMoney } from "./apply-demo-money";
 export { getServerTime } from "./get-server-time";
+export { orderCreateBatch } from "./order-create-batch";

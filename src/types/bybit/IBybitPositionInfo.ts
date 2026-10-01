@@ -1,5 +1,4 @@
-import { IBybitPositionSide } from "./enums";
-import { IBybitCredentials } from "./IBybitCredentials";
+import { IBybitCategory, IBybitPositionSide } from "./enums";
 
 // Raw row returned by Bybit /v5/position/list.
 export type IBybitPositionInfo = {
@@ -39,17 +38,16 @@ export type IBybitPositionInfo = {
 };
 
 export type IBybitPositionInfoRequest = {
-  credentials: IBybitCredentials;
-  category: string;
+  category: IBybitCategory.LINEAR | IBybitCategory.INVERSE | IBybitCategory.OPTION;
   symbol?: string;
+  baseCoin?: string;
   settleCoin?: string;
   limit?: number;
   cursor?: string;
 };
 
 export type IBybitPositionInfoResponse = {
-  category: string;
+  category: IBybitCategory;
   list?: IBybitPositionInfo[];
   nextPageCursor?: string;
-  time?: number;
 };
