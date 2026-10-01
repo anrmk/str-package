@@ -4,6 +4,7 @@ import type {
   IBybitClosedPnlRequest,
   IBybitCredentials,
   IBybitDemoApplyMoneyRequest,
+  IBybitOrderCreateBatchRequest,
   IBybitPositionInfoRequest,
 } from "../types/bybit";
 import { syncBybitServerTime } from "../utils/bybitHelper";
@@ -14,7 +15,8 @@ import {
   getAccountInfo,
   getWalletBalance,
   applyDemoMoney,
-  getPositionInfo
+  getPositionInfo,
+  orderCreateBatch
 } from "../providers/bybit";
 
 export class BybitClient {
@@ -84,5 +86,13 @@ export class BybitClient {
   ) {
     await this.ready;
     return await getPositionInfo(credentials, payload, this.timeOffset);
+  }
+
+  async orderCreateBatch(
+    credentials: IBybitCredentials,
+    payload: IBybitOrderCreateBatchRequest
+  ) {
+    await this.ready;
+    return await orderCreateBatch(credentials, payload, this.timeOffset);
   }
 }
