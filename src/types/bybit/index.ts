@@ -1,7 +1,10 @@
 export {
   IBybitAccountType,
   IBybitCoinType,
+  IBybitOrderType,
+  IBybitUnifiedMarginStatus,
   IBybitApiKeyVipLevel,
+  IBybitPositionSide,
   IBybitCategory,
   IBybitMarginMode
 } from "./enums";

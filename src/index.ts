@@ -5,3 +5,13 @@ export * from "./utils/helper";
 export type * from "./types";
 export type * from "./types/bybit";
 export type * from "./types/challenge";
+export {
+   IBybitAccountType,
+  IBybitCoinType,
+  IBybitOrderType,
+  IBybitUnifiedMarginStatus,
+  IBybitApiKeyVipLevel,
+  IBybitPositionSide,
+  IBybitCategory,
+  IBybitMarginMode
+} from "./types/bybit";
