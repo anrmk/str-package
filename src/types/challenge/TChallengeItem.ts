@@ -30,7 +30,7 @@ export type TChallengeItem = TChallengeBase & {
   progress?: TChallengeProgress;
   rule?: TChallengeRule;
   wallet?: TChallengeWalletBalance;
-  cpnl?: TChallengeClosedPnl[];
+  closedPnl?: TChallengeClosedPnl[];
   pinfo?: TChallengePositionInfo[];
 
   daysActive?: number | null;
