@@ -5,6 +5,8 @@ import type {
   TChallengeStatistics,
   TChallengeApiKeyInfo,
   TChallengeStatus,
+  TChallengeClosedPnl,
+  TChallengePositionInfo,
 } from ".";
 
 type TChallengeBase = {
@@ -28,8 +30,16 @@ export type TChallengeItem = TChallengeBase & {
   progress?: TChallengeProgress;
   rule?: TChallengeRule;
   wallet?: TChallengeWalletBalance;
+  cpnl?: TChallengeClosedPnl[];
+  pinfo?: TChallengePositionInfo[];
+
+  daysActive?: number | null;
+  daysRemaining?: number | null;
+  apiKeyHint?: string;
+  hasCredentials: boolean;
 };
 
+// deprecated: TChallengeListItem is a simplified version of TChallengeItem for list views
 export type TChallengeListItem = TChallengeBase & {
   statistics?: TChallengeStatistics;
   progress?: TChallengeProgress;
