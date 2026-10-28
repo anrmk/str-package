@@ -1,28 +1,45 @@
+
 name: Publish npm package
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write # Required for OpenID Connect (OIDC) token exchange
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-          # Note: Do NOT include registry-url or token options here
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
 
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+      - name: Verify npm version
+        run: |
+          node --version
+          npm --version
+          npm install --global npm@^11.5.1
+          npm --version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
 
       - name: Publish to npm
-        # No NODE_AUTH_TOKEN is needed; npm handles OIDC authentication automatically
         run: npm publish --access public --provenance
