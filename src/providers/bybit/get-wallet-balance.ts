@@ -11,8 +11,8 @@ export async function getWalletBalance(
   const { apiKey } = credentials;
 
   const query = new URLSearchParams({
-    accountType: IBybitAccountType.UNIFIED,
-    coin: BYBIT_CONSTANTS.defaultCoin,
+    accountType: IBybitAccountType.UNIFIED
+    //coin: BYBIT_CONSTANTS.defaultCoin,
   });
   const queryString = query.toString();
 
