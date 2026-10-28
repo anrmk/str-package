@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      id-token: write # Required for OpenID Connect (OIDC) token exchange
 
     steps:
       - uses: actions/checkout@v4
@@ -17,12 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          # Do NOT include registry-url or token options here
 
       - run: npm install
       - run: npm test
       - run: npm run build
 
-      - name: Publish
+      - name: Publish to npm
+        # No NODE_AUTH_TOKEN environment variable should be passed here
         run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ""
