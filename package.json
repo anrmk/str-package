@@ -1,13 +1,13 @@
 {
   "name": "@anrmk/str-package",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "description": "Shared providers, types, and utils for STR services",
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anrmk/str-package"
+    "url": "git+https://github.com/anrmk/str-package.git"
   },
   "engines": {
     "node": ">=20"
