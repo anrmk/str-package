@@ -17,12 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          # Do NOT include registry-url or token options here
+          # Note: Do NOT include registry-url or token options here
 
       - run: npm install
       - run: npm test
       - run: npm run build
 
       - name: Publish to npm
-        # No NODE_AUTH_TOKEN environment variable should be passed here
+        # No NODE_AUTH_TOKEN is needed; npm handles OIDC authentication automatically
         run: npm publish --access public --provenance
