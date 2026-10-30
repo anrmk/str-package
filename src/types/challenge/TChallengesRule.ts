@@ -16,6 +16,7 @@ export type TChallengeRule = {
   readonly nextRuleId: string | null;
 
   name: string;
+  description: string;
   type: TChallengeType;
   mode: TChallengeMode;
   tradingPeriod: string;
