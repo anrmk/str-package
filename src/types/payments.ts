@@ -7,6 +7,7 @@ export type TCreatePaymentRequest = {
   currency: string;
   description?: string;
   orderId?: string;
+  customerEmail?: string;
 };
 
 export type TCreatePaymentResult = {
