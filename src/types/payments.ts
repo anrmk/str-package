@@ -1,6 +1,6 @@
-export type TPaymentProviderId = "free" | "confirmo" | "moonpay" | "nowpayments" | "zen";
+export type TPaymentProviderId = "FREE" | "CONFIRMO" | "MOONPAY" | "NOWPAYMENTS" | "ZEN";
 
-export type TPaymentStatus = "created" | "pending" | "completed" | "failed";
+export type TPaymentStatus = "CREATED" | "PENDING" | "COMPLETED" | "FAILED";
 
 export type TCreatePaymentRequest = {
   amount: number;
