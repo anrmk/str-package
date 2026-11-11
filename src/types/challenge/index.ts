@@ -19,3 +19,4 @@ export type { TChallengePositionInfo } from "./TChallengePositionInfo";
 export type { TChallengeItem, TChallengeListItem } from "./TChallengeItem";
 export type { TChallengeStatistics } from "./TChallengeStatistics";
 export type { TChallengeTier } from "./TChallengeTier";
+export type { TChallengeInvoice } from "./TChallengeInvoice";

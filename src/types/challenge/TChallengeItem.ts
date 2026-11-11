@@ -7,6 +7,7 @@ import type {
   TChallengeStatus,
   TChallengeClosedPnl,
   TChallengePositionInfo,
+  TChallengeInvoice
 } from ".";
 
 type TChallengeBase = {
@@ -30,6 +31,7 @@ export type TChallengeItem = TChallengeBase & {
   progress?: TChallengeProgress;
   rule?: TChallengeRule;
   wallet?: TChallengeWalletBalance;
+  invoice?: TChallengeInvoice;
   closedPnl?: TChallengeClosedPnl[];
   pinfo?: TChallengePositionInfo[];
 
