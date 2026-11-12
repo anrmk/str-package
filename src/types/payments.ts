@@ -20,4 +20,5 @@ export type TCreatePaymentResult = {
 export type TPaymentProvider = {
   readonly id: TPaymentProviderId;
   createPayment(request: TCreatePaymentRequest): Promise<TCreatePaymentResult>;
+  getPayment(paymentId: string): Promise<any>;
 };
