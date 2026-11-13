@@ -13,6 +13,9 @@ export type TCreatePaymentRequest = {
 export type TCreatePaymentResult = {
   provider: TPaymentProviderId;
   paymentId?: string;
+  invoiceId?: string;
+  orderId?: string;
+  orderDescription?: string;
   checkoutUrl: string;
   status: TPaymentStatus;
 };
